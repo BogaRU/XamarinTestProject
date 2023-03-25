@@ -48,37 +48,29 @@ namespace XamarinAppTst
         {
             int i = 1;
             int j = 0;
-            // добавляем первую строку с заголовками
+
             grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
             grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(150) });
             grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(150) });
 
-            var labelId = new Label { Text = "Id", HorizontalTextAlignment = TextAlignment.Start };
-            Grid.SetRow(labelId, 0); // первая строка
-            Grid.SetColumn(labelId, 0); // первая колонка
-            grid.Children.Add(labelId);
-
-            var labelPrice = new Label { Text = "Price", HorizontalTextAlignment = TextAlignment.End };
-            Grid.SetRow(labelPrice, 0); // первая строка
-            Grid.SetColumn(labelPrice, 1); // вторая колонка
-            grid.Children.Add(labelPrice);
+            AddLabel(new Label { Text = "Id", HorizontalTextAlignment = TextAlignment.Start }, 0, 0);
+            AddLabel(new Label { Text = "Price", HorizontalTextAlignment = TextAlignment.End }, 0, 1);
 
             foreach (var offer in ymlCatalog.Shop.Offers.OfferList)
             {
                 grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 
-                var labelOfferId = new Label { Text = $"{offer.Id}", HorizontalTextAlignment = TextAlignment.Start };
-                Grid.SetRow(labelOfferId, i);
-                Grid.SetColumn(labelOfferId, j);
-                grid.Children.Add(labelOfferId);
-
-                var labelOfferPrice = new Label { Text = $"{offer.Price}", HorizontalTextAlignment = TextAlignment.End };
-                Grid.SetRow(labelOfferPrice, i);
-                Grid.SetColumn(labelOfferPrice, j + 1);
-                grid.Children.Add(labelOfferPrice);
-
+                AddLabel(new Label { Text = $"{offer.Id}", HorizontalTextAlignment = TextAlignment.Start }, i, 0);
+                AddLabel(new Label { Text = $"{offer.Price}", HorizontalTextAlignment = TextAlignment.End }, i, 1);
                 i++;
             }
+        }
+
+        public void AddLabel(Label labelOfferAttribute, int i, int j)
+        {
+            Grid.SetRow(labelOfferAttribute, i);
+            Grid.SetColumn(labelOfferAttribute, j);
+            grid.Children.Add(labelOfferAttribute);
         }
     }
 }
