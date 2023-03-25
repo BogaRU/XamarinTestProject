@@ -46,8 +46,7 @@ namespace XamarinAppTst
 
         public void FillGrid(YmlCatalog ymlCatalog)
         {
-            int i = 1;
-            int j = 0;
+            int row = 1;
 
             grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
             grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(150) });
@@ -60,16 +59,16 @@ namespace XamarinAppTst
             {
                 grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 
-                AddLabel(new Label { Text = $"{offer.Id}", HorizontalTextAlignment = TextAlignment.Start }, i, 0);
-                AddLabel(new Label { Text = $"{offer.Price}", HorizontalTextAlignment = TextAlignment.End }, i, 1);
-                i++;
+                AddLabel(new Label { Text = $"{offer.Id}", HorizontalTextAlignment = TextAlignment.Start }, row, 0);
+                AddLabel(new Label { Text = $"{offer.Price}", HorizontalTextAlignment = TextAlignment.End }, row, 1);
+                row++;
             }
         }
 
-        public void AddLabel(Label labelOfferAttribute, int i, int j)
+        public void AddLabel(Label labelOfferAttribute, int row, int column)
         {
-            Grid.SetRow(labelOfferAttribute, i);
-            Grid.SetColumn(labelOfferAttribute, j);
+            Grid.SetRow(labelOfferAttribute, row);
+            Grid.SetColumn(labelOfferAttribute, column);
             grid.Children.Add(labelOfferAttribute);
         }
     }
