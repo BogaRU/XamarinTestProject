@@ -35,17 +35,10 @@ namespace XamarinAppTst
                 response.EnsureSuccessStatusCode();
                 using (var stream = await response.Content.ReadAsStreamAsync())
                 {
-                    try
+                    using (var reader = new StreamReader(stream, Encoding.GetEncoding("Windows-1251")))
                     {
-                        using (var reader = new StreamReader(stream, Encoding.GetEncoding("Windows-1251")))
-                        {
-                            var ymlCatalog = (YmlCatalog)serializer.Deserialize(reader);
-                            FillGrid(ymlCatalog);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Error reading response stream: {ex.Message}");
+                        var ymlCatalog = (YmlCatalog)serializer.Deserialize(reader);
+                        FillGrid(ymlCatalog);
                     }
                 }
             }
