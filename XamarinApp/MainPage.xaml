@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinAppTst.MainPage"
              BackgroundColor="Pink">
-
-    <Grid x:Name="grid" HorizontalOptions="Center" VerticalOptions="Center" />
-
+    <ScrollView Orientation="Horizontal" VerticalScrollBarVisibility="Always" HorizontalScrollBarVisibility="Always">
+        <Grid x:Name="grid" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="20"/>
+    </ScrollView>
 </ContentPage>

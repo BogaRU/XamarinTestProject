@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -46,22 +47,36 @@ namespace XamarinAppTst
 
         public void FillGrid(YmlCatalog ymlCatalog)
         {
-            int row = 1;
+            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(20) });
 
-            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(150) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(150) });
+            var offerProperties = typeof(Offer).GetProperties();
 
-            AddLabel(new Label { Text = "Id", HorizontalTextAlignment = TextAlignment.Start }, 0, 0);
-            AddLabel(new Label { Text = "Price", HorizontalTextAlignment = TextAlignment.End }, 0, 1);
+            int columnIndex = 0;
 
-            foreach (var offer in ymlCatalog.Shop.Offers.OfferList)
+            foreach (var property in offerProperties)
             {
-                grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(40) });
 
-                AddLabel(new Label { Text = $"{offer.Id}", HorizontalTextAlignment = TextAlignment.Start }, row, 0);
-                AddLabel(new Label { Text = $"{offer.Price}", HorizontalTextAlignment = TextAlignment.End }, row, 1);
-                row++;
+                var label = new Label { Text = property.Name };
+                AddLabel(label, 0, columnIndex);
+
+                int rowIndex = 1;
+                foreach (var offer in ymlCatalog.Shop.Offers.OfferList)
+                {
+                    var value = property.GetValue(offer, null)?.ToString();
+
+                    var tapGestureRecognizer = new TapGestureRecognizer();
+                    tapGestureRecognizer.Tapped += async (s, e) => {
+                        var json = JsonConvert.SerializeObject(offer);
+                        await Navigation.PushAsync(new OfferPage(json));
+                    };
+
+                    var labelValue = new Label { Text = value, GestureRecognizers = { tapGestureRecognizer } };
+                    AddLabel(labelValue, rowIndex, columnIndex);
+
+                    rowIndex++;
+                }
+                columnIndex++;
             }
         }
 
@@ -70,6 +85,11 @@ namespace XamarinAppTst
             Grid.SetRow(labelOfferAttribute, row);
             Grid.SetColumn(labelOfferAttribute, column);
             grid.Children.Add(labelOfferAttribute);
+        }
+        public async void OpenOfferPage(Offer offer)
+        {
+            string json = JsonConvert.SerializeObject(offer, Newtonsoft.Json.Formatting.Indented);
+            await Navigation.PushAsync(new OfferPage(json));
         }
     }
 }
