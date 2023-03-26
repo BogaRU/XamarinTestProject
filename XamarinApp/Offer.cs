@@ -12,6 +12,12 @@ namespace XamarinAppTst
         [XmlAttribute("id")]
         public string Id { get; set; }
 
+        [XmlAttribute("available")]
+        public bool Available { get; set; }
+
+        [XmlAttribute("type")]
+        public string Type { get; set; }
+
         [XmlElement("name")]
         public string Name { get; set; }
 
@@ -21,7 +27,47 @@ namespace XamarinAppTst
         [XmlElement("vendor")]
         public string Vendor { get; set; }
 
+        [XmlElement("url")]
+        public string Url { get; set; }
+
+        [XmlElement("picture")]
+        public string Picture { get; set; }
+
         [XmlElement("description")]
         public string Description { get; set; }
+
+        [XmlElement("model")]
+        public string Model { get; set; }
+
+        [XmlElement("vendorCode")]
+        public string VendorCode { get; set; }
+
+        [XmlElement("categoryId")]
+        public string CategoryId { get; set; }
+
+        [XmlElement("delivery")]
+        public bool Delivery { get; set; }
+
+        [XmlElement("pickup")]
+        public bool Pickup { get; set; }
+
+        [XmlElement("store")]
+        public bool Store { get; set; }
+
+        [XmlElement("sales_notes")]
+        public string SalesNotes { get; set; }
+
+        [XmlElement("manufacturer_warranty")]
+        public bool ManufacturerWarranty { get; set; }
+
+        [XmlElement("country_of_origin")]
+        public string CountryOfOrigin { get; set; }
+
+        [XmlElement("barcode")]
+        public string Barcode { get; set; }
+
+
+        [XmlElement("currencyId")]
+        public string CurrencyId { get; set; }
     }
 }
