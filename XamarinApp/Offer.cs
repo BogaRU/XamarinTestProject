@@ -18,9 +18,6 @@ namespace XamarinAppTst
         [XmlElement("price")]
         public decimal Price { get; set; }
 
-        [XmlElement("param")]
-        public List<Param> Params { get; set; }
-
         [XmlElement("vendor")]
         public string Vendor { get; set; }
 
