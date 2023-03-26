@@ -54,18 +54,11 @@ namespace XamarinAppTst
         [XmlElement("store")]
         public bool Store { get; set; }
 
-        [XmlElement("sales_notes")]
-        public string SalesNotes { get; set; }
-
         [XmlElement("manufacturer_warranty")]
         public bool ManufacturerWarranty { get; set; }
 
         [XmlElement("country_of_origin")]
         public string CountryOfOrigin { get; set; }
-
-        [XmlElement("barcode")]
-        public string Barcode { get; set; }
-
 
         [XmlElement("currencyId")]
         public string CurrencyId { get; set; }
