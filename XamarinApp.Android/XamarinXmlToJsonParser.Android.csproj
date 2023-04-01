@@ -93,9 +93,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XamarinApp\XamarinAppTst.csproj">
+    <ProjectReference Include="..\XamarinApp\XamarinXmlToJsonParser.csproj">
       <Project>{571A886C-A2F0-43D2-98F3-56AC72E5CBEF}</Project>
-      <Name>XamarinAppTst</Name>
+      <Name>XamarinXmlToJsonParser</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
