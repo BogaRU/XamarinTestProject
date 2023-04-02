@@ -7,8 +7,11 @@
 
 # Скриншоты
 Главное окно программы:
+<br>
 ![Screenshot1](Screenshots/Screenshot1.png)
+<br>
 При нажатии на любую ячейку:
+<br>
 ![Screenshot2](Screenshots/Screenshot2.png)
 
 # Установка
