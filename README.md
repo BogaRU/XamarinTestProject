@@ -7,9 +7,9 @@
 
 # Скриншоты
 Главное окно программы:
-![Screenshot1](Screenshots/Screenshot1)
+![Screenshot1](Screenshots/Screenshot1.png)
 При нажатии на любую ячейку:
-![Screenshot2](Screenshots/Screenshot2)
+![Screenshot2](Screenshots/Screenshot2.png)
 
 # Установка
 Чтобы запустить проект, необходимо сначала склонировать его с помощью команды:
